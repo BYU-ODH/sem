@@ -1,4 +1,4 @@
-(defproject BYU-ODH/sem "1"
+(defproject byu-odh/sem "1"
   :description "BYU Semester helpers"
   :url "https://github.com/BYU-ODH/sem"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
