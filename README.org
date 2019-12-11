@@ -1,11 +1,19 @@
-* sem
-
+* BYU-ODH/sem
 A Clojure library designed to facilitate BYU semester and term operations, including arithmetic (like "20155 plus one is 20161"), getting the current year-term, and getting the starting and ending dates of a given year-term. 
 
 Note that the "get" functions utilize the BYU Web Service APIs and so will require appropriate subscriptions.
 
 ** Usage
+*** Include in leinengen
+#+BEGIN_SRC clojure
+[BYU-ODH/sem "1"]
+#+END_SRC
 *** sem.data for api calls (CLJ only)
+You are expected to have a client id and secret as per https://api.byu.edu/store/site/pages/subscriptions.jag. 
+To utilize the BYU services to get yt and yt-dates, you'll need to make sure the application for which you have the client (re: "Consumer" in BYU's current parlance) has subscriptions to the following:
+
+[[https://api.byu.edu/store/apis/info?name=RecordsControlDates&version=v1&provider=BYU/mrg2][RecordsControlDates v1]]
+
 #+BEGIN_SRC clojure
  sem.data> (def opt-map {:client-id "<YOUR CLIENT-ID"
                          :client-secret "<YOUR CLIENT-SECRET>"})
