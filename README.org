@@ -1,0 +1,39 @@
+* sem
+
+A Clojure library designed to facilitate BYU semester and term operations, including arithmetic (like "20155 plus one is 20161"), getting the current year-term, and getting the starting and ending dates of a given year-term. 
+
+Note that the "get" functions utilize the BYU Web Service APIs and so will require appropriate subscriptions.
+
+** Usage
+*** sem.data for api calls (CLJ only)
+#+BEGIN_SRC clojure
+ sem.data> (def opt-map {:client-id "<YOUR CLIENT-ID"
+                         :client-secret "<YOUR CLIENT-SECRET>"})
+ #'sem.data/opt-map
+ sem.data> (get-yt opt-map)
+ "20195"
+ sem.data> (get-dates-yt (assoc opt-map :yt "20195")
+ {:start-date #inst "2019-09-03T06:00:00.000-00:00", :year-term "20195", :end-date #inst "2019-12-19T07:00:00.000-00:00"}
+ #+END_SRC
+
+*** sem.core for arithmetic in CLJ or CLJS
+#+BEGIN_SRC clojure
+  sem.core> (add-yt "20191" -2)
+  "20184"
+  sem.core> (add-yt "20191" 4)
+  "20201"
+  sem.core> (dec-yt "20191")
+  "20185"
+  sem.core> (inc-yt "20195")
+  "20201"
+  sem.core> (gen-yt-text "20195")
+  "Fall 2019"
+  sem.core> (gen-yt-text "20192")
+  "Spring+Summer 2019"
+#+END_SRC
+** License
+Copyright © 2019 BYU Office of Digital Humanities
+
+This program and the accompanying materials are made available under the terms of the Eclipse Public License 2.0 which is available at http://www.eclipse.org/legal/epl-2.0.
+
+This Source Code may also be made available under the following Secondary Licenses when the conditions for such availability set forth in the Eclipse Public License, v. 2.0 are satisfied: GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version, with the GNU Classpath Exception which is available at https://www.gnu.org/software/classpath/license.html.

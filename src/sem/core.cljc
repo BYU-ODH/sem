@@ -59,14 +59,15 @@
   "Taking a yt string, increment it appropriately and return a map. Skip 2, wrap at 5."
   [yt]
   (let [yt (if (string? yt) yt
-               (parse-int yt))
-        
-        y (->> yt (take 4) (reduce str) parse-int)
-        t (->> yt last (reduce str) parse-int)]
-    (condp = t
-      1 (str y 3)
-      5 (str (inc y) 1)
-      (str y (inc t)))))
+               (parse-int yt))]
+    (add-yt yt 1)))
+
+(defn dec-yt
+  "Taking a yt string, increment it appropriately and return a map. Skip 2, wrap at 5."
+  [yt]
+  (let [yt (if (string? yt) yt
+               (parse-int yt))]
+    (add-yt yt -1)))
 
 (defn gen-yt-text
   "Take a yt string (20155) and return text (\"Fall, 2015\")"
